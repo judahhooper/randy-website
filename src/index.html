@@ -1,28 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">`
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/src/output.css">
-    <link rel="icon" type="image/x-icon" href="logo/RANDY-LOGO-01">
-    <title>Randy poo</title>
+    <link rel="icon" type="image/x-icon" href="/logo/RANDY-LOGO-01.png">
+    <title>Randy</title>
   </head>
-  <body class="flex flex-col justify-center items-center m-10">
-<nav class="flex w-full items-center justify-center px-10">
-  <img src="logo/RANDY-LOGO-01.png" class="size-min">
-  <h1 class="text-center text-lg">Randy are a band from Blackpool and Bradford</h1>
-  <img src="logo/RANDY-LOGO-01.png" class="size-min">
-</nav>
-  <div class="flex flex-row gap-10">
-    <div>
-      placeholder for traffic in bradford
-    </div>
-    <div>
-      placeholder for sea level in blackpool
-    </div>
+
+<body class="h-screen flex flex-col font-nimbus font-light">
+
+    <!-- navbar -->
+    <nav class="flex items-center justify-between p-5">
+      <img src="/logo/RANDY-LOGO-01.png" class="size-10 mx-3">
+      <h1 class="text-center text-lg">Randy are a band from Blackpool and Bradford</h1>
+      <a class="visible">🖕🏻</a>
+    </nav>
+
+    <!-- maps-->
+<div class="flex flex-row gap-10 p-4 justify-center">
+  <div id="bradford-map" class="h-80 w-80 rounded-lg shadow"></div>
+  <div class="h-80 w-80 flex items-center justify-center text-4xl">🚗🚙🚗</div>
+  <div id="blackpool-map" class="h-80 w-80 rounded-lg shadow"></div>
+</div>
+
+
+<div class="flex items-center gap-4 p-4 justify-center">
+  <span class="text-lg">Latest and best release</span>
+  <audio controls class="w-64">
+    <source src="/audio/Get Up & Go - final mix.wav" type="audio/wav" />
+  </audio>
+</div>
+
+
+
+    <!-- form -->
+     <div class=" flex justify-center m-6">
+    <form id="subscribe-form" class="flex justify-center gap-3">
+      <input type="email" id="email" placeholder="E-mail Here" required
+         class="border px-3 py-2 rounded">
+      <button type="submit" class=" text-black px-4 py-2 rounded">
+        Subscribe
+      </button>
+</form>
   </div>
-  
+
+
+    <div class="w-full flex flex-row gap-10 m-6 justify-center">
+    <a>Bandcamp</a>
+    <a>Soundcloud</a>
+    <a>Merch on the way</a>
+    <a>Live diary</a>
+    <a>Instagram</a>
+    <a>TikTok</a>
+    <a>Wav files</a>
+    <a>YouTube</a>
+    </div>
+    
+    <script>
+      function initMap() {
+        const bradford = { lat: 53.7950, lng: -1.7590 };
+        const blackpool = { lat:  53.810989, lng: -3.056017 };
+
+        const bradfordMap = new google.maps.Map(document.getElementById("bradford-map"), {
+          zoom: 13,
+          center: bradford,
+          mapTypeId: 'hybrid'
+        });
+
+               const blackpoolMap = new google.maps.Map(document.getElementById("blackpool-map"), {
+          zoom: 13,
+          center: blackpool,
+          mapTypeId: 'hybrid'
+        });
+        new google.maps.TrafficLayer().setMap(bradfordMap);
+        new google.maps.TrafficLayer().setMap(blackpoolMap);
+      }
+    </script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKsgAGdyTKgS2jFQx15Y3ApNPNbFVR0fQ&callback=initMap"
+      async defer
+    ></script>
   </body>
 </html>

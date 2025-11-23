@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @font-face {
-    font-family: 'NimbusRomNo9L-Reg';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/NimbusRomNo9L-Reg.otf) format('otf');
-  }
+@font-face {
+  font-family: 'NimbusRoman';
+  src: url('/public/fonts/nimbus-roman-no9-l/Nimbus-Roman.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
 }
